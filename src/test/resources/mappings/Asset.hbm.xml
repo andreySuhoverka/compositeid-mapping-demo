@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.asukhoverka.localization">
+
+    <class name="HotelImpl" table="asset">
+        <id name="id" column="asset_id">
+            <generator class="native"/>
+        </id>
+        <property name="code" column="code"/>
+        <!--<map name="localized" cascade="all, delete-orphan" lazy="true" inverse="true">
+            <key column="asset_id"/>
+            <map-key column="locale" type="string"/>
+            <one-to-many class="HotelImplLocalized"/>
+        </map>-->
+    </class>
+
+</hibernate-mapping>
