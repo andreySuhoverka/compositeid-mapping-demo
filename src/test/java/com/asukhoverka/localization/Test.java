@@ -8,9 +8,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Test extends TestCase {
     private SessionFactory sessionFactory;
 
@@ -47,7 +44,9 @@ public class Test extends TestCase {
         localizedHotel.getHotelImplLocalizedPK().setLocale(localeEn);
         localizedHotel.setAsset(hotel);
 
-        session.saveOrUpdate(localizedHotel);
+        hotel.getLocalized().put(localeEn, localizedHotel);
+
+        session.saveOrUpdate(hotel);
 
         session.getTransaction().commit();
 

@@ -34,7 +34,8 @@
 
         <mapping class="com.asukhoverka.localization.HotelImplLocalized"/>
         <mapping class="com.asukhoverka.localization.HotelImplLocalizedPK"/>
-        <mapping resource="mappings/Asset.hbm.xml"/>
+        <mapping class="com.asukhoverka.localization.HotelImpl"/>
+        <!--        <mapping resource="mappings/Asset.hbm.xml"/>-->
 
     </session-factory>
 

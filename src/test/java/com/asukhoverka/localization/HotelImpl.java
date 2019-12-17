@@ -5,11 +5,29 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "asset")
 public class HotelImpl implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(length = 5)
     private String code;
-//    private Map<String, HotelImplLocalized> localized = new HashMap<>();
+
+    @OneToMany(mappedBy = "asset", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @MapKey(name = "hotelImplLocalizedPK.locale")
+    private Map<String, HotelImplLocalized> localized = new HashMap<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -28,11 +46,11 @@ public class HotelImpl implements Serializable {
     }
 
 
-    /*public Map<String, HotelImplLocalized> getLocalized() {
+    public Map<String, HotelImplLocalized> getLocalized() {
         return localized;
     }
 
     public void setLocalized(Map<String, HotelImplLocalized> localized) {
         this.localized = localized;
-    }*/
+    }
 }
